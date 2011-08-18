@@ -59,5 +59,103 @@ namespace FQM.Properties {
                 resourceCulture = value;
             }
         }
+        
+        internal static System.Drawing.Bitmap Check {
+            get {
+                object obj = ResourceManager.GetObject("Check", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap Close {
+            get {
+                object obj = ResourceManager.GetObject("Close", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap Delete {
+            get {
+                object obj = ResourceManager.GetObject("Delete", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap Hide {
+            get {
+                object obj = ResourceManager.GetObject("Hide", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap ImportFile {
+            get {
+                object obj = ResourceManager.GetObject("ImportFile", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap ImportFolder {
+            get {
+                object obj = ResourceManager.GetObject("ImportFolder", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap Merge {
+            get {
+                object obj = ResourceManager.GetObject("Merge", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap Move {
+            get {
+                object obj = ResourceManager.GetObject("Move", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap New {
+            get {
+                object obj = ResourceManager.GetObject("New", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap Open {
+            get {
+                object obj = ResourceManager.GetObject("Open", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap Refresh {
+            get {
+                object obj = ResourceManager.GetObject("Refresh", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap Save {
+            get {
+                object obj = ResourceManager.GetObject("Save", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap SaveAs {
+            get {
+                object obj = ResourceManager.GetObject("SaveAs", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap Warning {
+            get {
+                object obj = ResourceManager.GetObject("Warning", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
