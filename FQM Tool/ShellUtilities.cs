@@ -14,7 +14,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-namespace FQM_Tool
+namespace FQM
 {
     /// <summary>
     /// This helper class allows listviews and tree views to use image from the system image list.

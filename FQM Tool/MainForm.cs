@@ -11,7 +11,7 @@ using System.Collections;
 using BrightIdeasSoftware;
 using System.Drawing.Drawing2D;
 
-namespace FQM_Tool
+namespace FQM
 {
     public partial class MainForm : Form
     {

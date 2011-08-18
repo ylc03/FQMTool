@@ -8,7 +8,7 @@
     <ProjectGuid>{CEB23260-74A3-47A2-81D0-5BFF7919D734}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FQM_Tool</RootNamespace>
+    <RootNamespace>FQM</RootNamespace>
     <AssemblyName>FQM Tool</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -51,6 +51,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Google.GData.Client, Version=1.8.0.0, Culture=neutral, PublicKeyToken=04a59ca9b0273830, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Google\Google Data API SDK\Redist\Google.GData.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.GData.Extensions, Version=1.8.0.0, Culture=neutral, PublicKeyToken=0b4c5df2ebf20876, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Google\Google Data API SDK\Redist\Google.GData.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.GData.Spreadsheets, Version=1.8.0.0, Culture=neutral, PublicKeyToken=3f77feb76ff0d9a1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Google\Google Data API SDK\Redist\Google.GData.Spreadsheets.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -70,6 +82,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\CSVLoader.cs" />
+    <Compile Include="Controller\GoogleDocLoader.cs" />
+    <Compile Include="Controller\ITemplateLoader.cs" />
+    <Compile Include="CopyDirectory.cs" />
+    <Compile Include="FolderManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FolderManager.Designer.cs">
+      <DependentUpon>FolderManager.cs</DependentUpon>
+    </Compile>
     <Compile Include="JobQualityFolder.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -79,8 +101,16 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\JobQualityFolder.cs" />
+    <Compile Include="Model\Section.cs" />
+    <Compile Include="Model\SubSection.cs" />
+    <Compile Include="Model\Template.cs" />
+    <Compile Include="Model\TemplateFactory.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FolderManager.resx">
+      <DependentUpon>FolderManager.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -147,6 +177,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\tick16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="View\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

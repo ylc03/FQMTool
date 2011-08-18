@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace FQM_Tool
+namespace FQM
 {
     public class ContentMapping
     {
@@ -63,12 +63,12 @@ namespace FQM_Tool
             "Section 09 Equipment Lists, Load out and Backload lists",
             "Section 10 Sales Items Certificates and Test Data",
             "Section 11 Service Equipment RITE information",
-            "section 12 Handling Equipment Certificates",
+            "Section 12 Handling Equipment Certificates",
             "Section 13 QHSE, QUEST and Intouch",
             "Section 14 Job Execution(Wellsite Reports)",
             "Section 15 Field Ticket",
             "Section 16 End of Well Report",
-            "Section 17 Meeting Minutes",
+            "section 17 meeting minutes",
             "Section 18 Miscellaneous",
         };
 

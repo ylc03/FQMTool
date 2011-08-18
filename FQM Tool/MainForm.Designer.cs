@@ -1,4 +1,4 @@
-﻿namespace FQM_Tool
+﻿namespace FQM
 {
     partial class MainForm
     {
