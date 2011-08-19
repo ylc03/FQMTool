@@ -54,7 +54,7 @@ namespace FQM
                 }
                 return "IGNORE"; // ignore
             };
-            this.statusColumnFQM.Renderer = new MappedImageRenderer(new object[] {"YES", Resource.tick16, "NEED", Resource.down16});
+            this.statusColumnFQM.Renderer = new MappedImageRenderer(new object[] {"YES", Resource.Check, "NEED", Resource.Warning});
             
             this.folderFQMView.OwnerDraw = true;
             this.folderFQMView.BuildGroups(this.contentColumnFQM, SortOrder.Ascending);

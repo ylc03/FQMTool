@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>FQM</RootNamespace>
     <AssemblyName>FQM Tool</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
@@ -32,6 +32,7 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -92,6 +93,11 @@
     <Compile Include="FolderManager.Designer.cs">
       <DependentUpon>FolderManager.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helper\AspectExtensions.cs" />
+    <Compile Include="Helper\AspectF.cs" />
+    <Compile Include="Helper\CommonHelper.cs" />
+    <Compile Include="Helper\ICache.cs" />
+    <Compile Include="Helper\ObjectExtensions.cs" />
     <Compile Include="JobQualityFolder.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -114,20 +120,11 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="Resource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -143,6 +140,7 @@
       <DependentUpon>Resource.resx</DependentUpon>
     </Compile>
     <Compile Include="ShellUtilities.cs" />
+    <None Include="Resources\Thumbs.db" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ObjectListView\ObjectListView.csproj">
@@ -173,13 +171,23 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\down16.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\tick16.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="View\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Check.png" />
+    <Content Include="Resources\Close.png" />
+    <Content Include="Resources\Delete.png" />
+    <Content Include="Resources\Hide.png" />
+    <Content Include="Resources\ImportFile.png" />
+    <Content Include="Resources\ImportFolder.png" />
+    <Content Include="Resources\Merge.png" />
+    <Content Include="Resources\Move.png" />
+    <Content Include="Resources\New.png" />
+    <Content Include="Resources\Open.png" />
+    <Content Include="Resources\Refresh.png" />
+    <Content Include="Resources\Save.png" />
+    <Content Include="Resources\SaveAs.png" />
+    <Content Include="Resources\Warning.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -23,7 +23,13 @@ namespace FQM.Model
         /// <summary>
         /// Template sections, always fixed.
         /// </summary>
-        public readonly List<Section> Sections { get; }
+        public List<Section> Sections 
+        { 
+            get 
+            {
+                return sections;
+            } 
+        }
 
         /// <summary>
         /// Template name

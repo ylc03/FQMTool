@@ -38,8 +38,8 @@ namespace FQM.Model
         private Dictionary<string, SubSection> mapping = new Dictionary<string, SubSection>();
         private Template folderTemplate;
 
-        public static const string POSTFIX = "jqf";
-        public static const string CONFIG_FILENAME = "config" + "." + JobQualityFolder.POSTFIX;
+        public const string POSTFIX = "jqf";
+        public const string CONFIG_FILENAME = "config" + "." + JobQualityFolder.POSTFIX;
 
         public JobQualityFolder(string rootPath)
         {
