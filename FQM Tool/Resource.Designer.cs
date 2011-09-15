@@ -151,13 +151,6 @@ namespace FQM {
             }
         }
         
-        internal static byte[] Thumbs {
-            get {
-                object obj = ResourceManager.GetObject("Thumbs", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
         internal static System.Drawing.Bitmap Warning {
             get {
                 object obj = ResourceManager.GetObject("Warning", resourceCulture);

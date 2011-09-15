@@ -20,6 +20,8 @@ namespace FQM
         public FolderManager()
         {
             InitializeComponent();
+
+            refreshMenu();
         }
 
         #region Menu Item Click
@@ -47,13 +49,16 @@ namespace FQM
                 }
 
                 jobFolder = new Model.JobQualityFolder(folderBrowserDialog.SelectedPath);
-                this.RefreshGUI();
+                this.refreshMenu();
             }
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            jobFolder.Save();
+            if (jobFolder.IsDirty)
+            {
+                jobFolder.Save();
+            }
         }
         
         private void closeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -75,14 +80,19 @@ namespace FQM
             }
 
             jobFolder = null;
-            this.RefreshGUI();
+            this.refreshMenu();
         }
 
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (jobFolder.IsDirty)
+            if (folderBrowserDialog.ShowDialog(this) == DialogResult.OK)
             {
-                jobFolder.Save();
+                string root = folderBrowserDialog.SelectedPath;
+                if (Model.JobQualityFolder.ValidateRootPath(root))
+                {
+                    jobFolder.SaveAs(root);
+                    jobFolder.IsDirty = false;
+                }
             }
         }
 
@@ -133,9 +143,24 @@ namespace FQM
 
         #endregion
 
-        private void RefreshGUI()
-        { 
-
+        private void refreshMenu()
+        {
+            if (this.jobFolder == null)
+            {
+                this.editToolStripMenuItem.Enabled = false;
+                this.hideOptionalToolStripMenuItem.Enabled = false;
+                this.saveAsToolStripMenuItem.Enabled = false;
+                this.saveToolStripMenuItem.Enabled = false;
+                this.closeToolStripMenuItem.Enabled = false;
+            }
+            else
+            {
+                this.editToolStripMenuItem.Enabled = true;
+                this.hideOptionalToolStripMenuItem.Enabled = true;
+                this.saveAsToolStripMenuItem.Enabled = true;
+                this.saveToolStripMenuItem.Enabled = true;
+                this.closeToolStripMenuItem.Enabled = true;
+            }
         }
 
     }

@@ -9,7 +9,7 @@ namespace FQM.Model
 {
     class RootPathChangeEventArg : EventArgs
     {
-        public string NewRoot { get; set; }
+        public string Root { get; set; }
         public string OldRoot { get; set; }
     }
 
@@ -64,18 +64,18 @@ namespace FQM.Model
             }
             set
             {
-                if (!this.ValidateRootPath(value))
+                if (!this.validateRootPath(value))
                 {
                     throw new InvalidRootPathException(value);
                 }
 
                 DirectoryInfo newRoot = new DirectoryInfo(value);
-                if (string.Compare(this.rootPath.FullName, newRoot.FullName, true) != 0)
+                if (this.rootPath == null || string.Compare(this.rootPath.FullName, newRoot.FullName, true) != 0)
                 {
-                    DirectoryInfo oldRoot = rootPath;
-                    rootPath = newRoot;
-                    configFile = newRoot.FullName + Path.DirectorySeparatorChar + JobQualityFolder.CONFIG_FILENAME;
-                    RaiseRootPathChangeEvent(this, new RootPathChangeEventArg { OldRoot = oldRoot.FullName, NewRoot = newRoot.FullName });
+                    string oldRootName = this.rootPath == null ? "" : this.rootPath.FullName;
+                    this.rootPath = newRoot;
+                    this.configFile = newRoot.FullName + Path.DirectorySeparatorChar + JobQualityFolder.CONFIG_FILENAME;
+                    RaiseRootPathChangeEvent(this, new RootPathChangeEventArg { OldRoot = oldRootName, Root = newRoot.FullName });
                 }
             }
         }
@@ -84,7 +84,7 @@ namespace FQM.Model
         {
             get
             {
-                return this.ValidateRootPath(this.RootPath);
+                return this.validateRootPath(this.RootPath);
             }
         }
 
@@ -132,6 +132,13 @@ namespace FQM.Model
         public void Save()
         {
 
+        }
+
+        public void SaveAs(string folder)
+        {
+            //TODO: save everything in new folder
+
+            this.RootPath = folder;
         }
 
         public void Load()
@@ -204,11 +211,25 @@ namespace FQM.Model
             return this.mapping.Keys.Contains(fs.FullName);
         }
 
-        private bool ValidateRootPath(string root)
+        private bool validateRootPath(string root)
         {
             if (Directory.Exists(root))
             {
                 return true;
+            }
+
+            return false;
+        }
+
+        public static bool ValidateRootPath(string root)
+        {
+            if (Directory.Exists(root))
+            {
+                DirectoryInfo dirInfo = new DirectoryInfo(root);
+                if (dirInfo.GetFileSystemInfos().Length == 0)
+                {
+                    return true;
+                }
             }
 
             return false;

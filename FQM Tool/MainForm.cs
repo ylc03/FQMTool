@@ -29,7 +29,7 @@ namespace FQM
 
         private void InitializeFolderFQMView()
         {
-            this.folderFQMView.AddObjects(JobQualityFolder.ContentMapping);
+            this.folderFQMView.AddObjects(JobQualityFolderOld.ContentMapping);
             this.contentColumnFQM.GroupKeyGetter = delegate (object rowObject)
             {
                 ContentMapping content = (ContentMapping)rowObject;
@@ -196,7 +196,7 @@ namespace FQM
 
                 if (editor.Items.Contains(editor.Text))
                 {
-                    map = JobQualityFolder.ContentMapping[editor.Items.IndexOf(editor.Text)];
+                    map = JobQualityFolderOld.ContentMapping[editor.Items.IndexOf(editor.Text)];
                     this.fileMapping[file.FullName] = map;
                     map.Present += 1;
                     this.folderFQMView.RefreshObject(map);
@@ -257,14 +257,14 @@ namespace FQM
         private void comboSubSegment_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.folderFQMView.ClearObjects();
-            this.folderFQMView.AddObjects(JobQualityFolder.ContentMapping);
+            this.folderFQMView.AddObjects(JobQualityFolderOld.ContentMapping);
             this.checkBoxHideOptional_CheckedChanged(null, null);
         }
 
         private void checkBoxHideOptional_CheckedChanged(object sender, EventArgs e)
         {
             List<ContentMapping> hideMappings = new List<ContentMapping>();
-            foreach (ContentMapping map in JobQualityFolder.ContentMapping)
+            foreach (ContentMapping map in JobQualityFolderOld.ContentMapping)
             {
                 switch (this.comboSubSegment.Text)
                 {

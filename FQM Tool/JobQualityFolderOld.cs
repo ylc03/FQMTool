@@ -31,7 +31,7 @@ namespace FQM
         {
             get
             {
-                return JobQualityFolder.sectionNames[this.Section - 1];
+                return JobQualityFolderOld.sectionNames[this.Section - 1];
             }
         }
     }
@@ -40,14 +40,14 @@ namespace FQM
     {
         public ContentMappingStructEditor()
         {
-            foreach(ContentMapping map in JobQualityFolder.ContentMapping)
+            foreach(ContentMapping map in JobQualityFolderOld.ContentMapping)
             {
                 this.Items.Add(map.Content);
             }
         }
     }
 
-    public class JobQualityFolder
+    public class JobQualityFolderOld
     {
         private String jobFolder;
 
@@ -144,7 +144,7 @@ namespace FQM
         };
 
         // contructor
-        public JobQualityFolder(String folder)
+        public JobQualityFolderOld(String folder)
         {
             this.jobFolder = folder;  
         }

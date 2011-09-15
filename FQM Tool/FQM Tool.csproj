@@ -140,7 +140,6 @@
       <DependentUpon>Resource.resx</DependentUpon>
     </Compile>
     <Compile Include="ShellUtilities.cs" />
-    <None Include="Resources\Thumbs.db" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ObjectListView\ObjectListView.csproj">
