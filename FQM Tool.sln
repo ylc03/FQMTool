@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual C# Express 2010
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FQM Tool", "FQM Tool\FQM Tool.csproj", "{CEB23260-74A3-47A2-81D0-5BFF7919D734}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SparkleLibrary", "SparkleLibrary\SparkleLibrary.csproj", "{D63F9786-B608-4085-AF08-D909448B0426}"
@@ -8,6 +8,11 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObjectListView", "ObjectListView\ObjectListView.csproj", "{18FEDA0C-D147-4286-B39A-01204808106A}"
 	ProjectSection(ProjectDependencies) = postProject
 		{D63F9786-B608-4085-AF08-D909448B0426} = {D63F9786-B608-4085-AF08-D909448B0426}
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{36A0A5B9-A3A9-4D53-895B-6FD5678C6BFA}"
+	ProjectSection(SolutionItems) = preProject
+		TODO.txt = TODO.txt
 	EndProjectSection
 EndProject
 Global

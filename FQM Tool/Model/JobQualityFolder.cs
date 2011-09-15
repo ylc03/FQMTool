@@ -15,7 +15,7 @@ namespace FQM.Model
 
     class TemplateChangeEventArg : EventArgs
     {
-        public string NewTemplate { get; set; }
+        public string Template { get; set; }
         public string OldTemplate { get; set; }
     }
 
@@ -64,7 +64,7 @@ namespace FQM.Model
             }
             set
             {
-                if (!this.validateRootPath(value))
+                if (!JobQualityFolder.ValidateRootPath(value))
                 {
                     throw new InvalidRootPathException(value);
                 }
@@ -84,7 +84,7 @@ namespace FQM.Model
         {
             get
             {
-                return this.validateRootPath(this.RootPath);
+                return JobQualityFolder.ValidateRootPath(this.RootPath);
             }
         }
 
@@ -211,7 +211,7 @@ namespace FQM.Model
             return this.mapping.Keys.Contains(fs.FullName);
         }
 
-        private bool validateRootPath(string root)
+        public static bool ValidateRootPath(string root)
         {
             if (Directory.Exists(root))
             {
@@ -221,12 +221,12 @@ namespace FQM.Model
             return false;
         }
 
-        public static bool ValidateRootPath(string root)
+        public static bool ValidateNewPath(string root)
         {
             if (Directory.Exists(root))
             {
-                DirectoryInfo dirInfo = new DirectoryInfo(root);
-                if (dirInfo.GetFileSystemInfos().Length == 0)
+                DirectoryInfo rootInfo = new DirectoryInfo(root);
+                if (rootInfo.GetFileSystemInfos().Length == 0)
                 {
                     return true;
                 }

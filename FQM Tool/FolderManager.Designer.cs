@@ -51,7 +51,27 @@
             this.updateTemplateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
+            this.splitContainer = new System.Windows.Forms.SplitContainer();
+            this.templateGroup = new System.Windows.Forms.GroupBox();
+            this.templateView = new BrightIdeasSoftware.ObjectListView();
+            this.statusColumnFQM = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.contentColumnFQM = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.countColumnFQM = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.fileGroup = new System.Windows.Forms.GroupBox();
+            this.folderView = new BrightIdeasSoftware.TreeListView();
+            this.treeColumnName = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.treeColumnMapping = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.treeColumnModify = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.treeColumnSize = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.treeColumnFileType = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.mainMenuStrip.SuspendLayout();
+            this.splitContainer.Panel1.SuspendLayout();
+            this.splitContainer.Panel2.SuspendLayout();
+            this.splitContainer.SuspendLayout();
+            this.templateGroup.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.templateView)).BeginInit();
+            this.fileGroup.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.folderView)).BeginInit();
             this.SuspendLayout();
             // 
             // mainMenuStrip
@@ -89,7 +109,7 @@
             // 
             this.newToolStripMenuItem.Image = global::FQM.Resource.New;
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
             this.newToolStripMenuItem.Text = "New";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
@@ -97,7 +117,7 @@
             // 
             this.openToolStripMenuItem.Image = global::FQM.Resource.Open;
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
@@ -105,7 +125,7 @@
             // 
             this.closeToolStripMenuItem.Image = global::FQM.Resource.Close;
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
             this.closeToolStripMenuItem.Text = "Close";
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
@@ -113,7 +133,7 @@
             // 
             this.saveToolStripMenuItem.Image = global::FQM.Resource.Save;
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
@@ -121,7 +141,7 @@
             // 
             this.saveAsToolStripMenuItem.Image = global::FQM.Resource.SaveAs;
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
             this.saveAsToolStripMenuItem.Text = "Save As";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
             // 
@@ -236,17 +256,181 @@
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
+            // splitContainer
+            // 
+            this.splitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer.Location = new System.Drawing.Point(0, 24);
+            this.splitContainer.Name = "splitContainer";
+            // 
+            // splitContainer.Panel1
+            // 
+            this.splitContainer.Panel1.Controls.Add(this.templateGroup);
+            // 
+            // splitContainer.Panel2
+            // 
+            this.splitContainer.Panel2.Controls.Add(this.fileGroup);
+            this.splitContainer.Size = new System.Drawing.Size(817, 583);
+            this.splitContainer.SplitterDistance = 317;
+            this.splitContainer.TabIndex = 4;
+            // 
+            // templateGroup
+            // 
+            this.templateGroup.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.templateGroup.Controls.Add(this.templateView);
+            this.templateGroup.Location = new System.Drawing.Point(4, 4);
+            this.templateGroup.Name = "templateGroup";
+            this.templateGroup.Size = new System.Drawing.Size(313, 576);
+            this.templateGroup.TabIndex = 0;
+            this.templateGroup.TabStop = false;
+            this.templateGroup.Text = "Template";
+            // 
+            // templateView
+            // 
+            this.templateView.AllColumns.Add(this.statusColumnFQM);
+            this.templateView.AllColumns.Add(this.contentColumnFQM);
+            this.templateView.AllColumns.Add(this.countColumnFQM);
+            this.templateView.AllowDrop = true;
+            this.templateView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.templateView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.statusColumnFQM,
+            this.contentColumnFQM,
+            this.countColumnFQM});
+            this.templateView.GridLines = true;
+            this.templateView.HeaderUsesThemes = false;
+            this.templateView.HideSelection = false;
+            this.templateView.HighlightBackgroundColor = System.Drawing.Color.Crimson;
+            this.templateView.HighlightForegroundColor = System.Drawing.Color.DarkGreen;
+            this.templateView.Location = new System.Drawing.Point(6, 20);
+            this.templateView.Name = "templateView";
+            this.templateView.Size = new System.Drawing.Size(301, 551);
+            this.templateView.TabIndex = 0;
+            this.templateView.UseCompatibleStateImageBehavior = false;
+            this.templateView.View = System.Windows.Forms.View.Details;
+            this.templateView.DragDrop += new System.Windows.Forms.DragEventHandler(this.templateView_DragDrop);
+            this.templateView.DragEnter += new System.Windows.Forms.DragEventHandler(this.templateView_DragEnter);
+            // 
+            // statusColumnFQM
+            // 
+            this.statusColumnFQM.IsEditable = false;
+            this.statusColumnFQM.MaximumWidth = 20;
+            this.statusColumnFQM.MinimumWidth = 20;
+            this.statusColumnFQM.Text = "Status";
+            this.statusColumnFQM.Width = 20;
+            // 
+            // contentColumnFQM
+            // 
+            this.contentColumnFQM.AspectName = "Content";
+            this.contentColumnFQM.IsEditable = false;
+            this.contentColumnFQM.Text = "Content";
+            this.contentColumnFQM.Width = 186;
+            // 
+            // countColumnFQM
+            // 
+            this.countColumnFQM.AspectName = "Present";
+            this.countColumnFQM.Text = "Count";
+            // 
+            // fileGroup
+            // 
+            this.fileGroup.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.fileGroup.Controls.Add(this.folderView);
+            this.fileGroup.Location = new System.Drawing.Point(4, 4);
+            this.fileGroup.Name = "fileGroup";
+            this.fileGroup.Size = new System.Drawing.Size(489, 576);
+            this.fileGroup.TabIndex = 0;
+            this.fileGroup.TabStop = false;
+            this.fileGroup.Text = "Job folder tree";
+            // 
+            // folderView
+            // 
+            this.folderView.AllColumns.Add(this.treeColumnName);
+            this.folderView.AllColumns.Add(this.treeColumnMapping);
+            this.folderView.AllColumns.Add(this.treeColumnModify);
+            this.folderView.AllColumns.Add(this.treeColumnSize);
+            this.folderView.AllColumns.Add(this.treeColumnFileType);
+            this.folderView.AllowDrop = true;
+            this.folderView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.folderView.CellEditActivation = BrightIdeasSoftware.ObjectListView.CellEditActivateMode.SingleClick;
+            this.folderView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.treeColumnName,
+            this.treeColumnMapping,
+            this.treeColumnModify,
+            this.treeColumnSize,
+            this.treeColumnFileType});
+            this.folderView.EmptyListMsg = "Create/Open a job folder";
+            this.folderView.Location = new System.Drawing.Point(6, 20);
+            this.folderView.Name = "folderView";
+            this.folderView.OverlayText.InsetX = 40;
+            this.folderView.OverlayText.Rotation = -90;
+            this.folderView.OverlayText.Text = "";
+            this.folderView.OwnerDraw = true;
+            this.folderView.ShowGroups = false;
+            this.folderView.Size = new System.Drawing.Size(477, 551);
+            this.folderView.TabIndex = 0;
+            this.folderView.UseCompatibleStateImageBehavior = false;
+            this.folderView.View = System.Windows.Forms.View.Details;
+            this.folderView.VirtualMode = true;
+            // 
+            // treeColumnName
+            // 
+            this.treeColumnName.AspectName = "Name";
+            this.treeColumnName.IsTileViewColumn = true;
+            this.treeColumnName.MinimumWidth = 100;
+            this.treeColumnName.Text = "File Name";
+            this.treeColumnName.UseInitialLetterForGroup = true;
+            this.treeColumnName.Width = 200;
+            // 
+            // treeColumnMapping
+            // 
+            this.treeColumnMapping.Text = "Mapping";
+            this.treeColumnMapping.Width = 150;
+            // 
+            // treeColumnModify
+            // 
+            this.treeColumnModify.AspectName = "LastWriteTime";
+            this.treeColumnModify.IsEditable = false;
+            this.treeColumnModify.Text = "Modify";
+            // 
+            // treeColumnSize
+            // 
+            this.treeColumnSize.AspectName = "Extension";
+            this.treeColumnSize.HeaderTextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.treeColumnSize.IsEditable = false;
+            this.treeColumnSize.Text = "size";
+            this.treeColumnSize.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // treeColumnFileType
+            // 
+            this.treeColumnFileType.IsEditable = false;
+            this.treeColumnFileType.IsTileViewColumn = true;
+            this.treeColumnFileType.Text = "File Type";
+            // 
             // FolderManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(817, 607);
+            this.Controls.Add(this.splitContainer);
             this.Controls.Add(this.mainMenuStrip);
             this.MainMenuStrip = this.mainMenuStrip;
             this.Name = "FolderManager";
             this.Text = "FQM Folder Manager";
             this.mainMenuStrip.ResumeLayout(false);
             this.mainMenuStrip.PerformLayout();
+            this.splitContainer.Panel1.ResumeLayout(false);
+            this.splitContainer.Panel2.ResumeLayout(false);
+            this.splitContainer.ResumeLayout(false);
+            this.templateGroup.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.templateView)).EndInit();
+            this.fileGroup.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.folderView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -277,5 +461,18 @@
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
         private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
+        private System.Windows.Forms.SplitContainer splitContainer;
+        private System.Windows.Forms.GroupBox templateGroup;
+        private BrightIdeasSoftware.ObjectListView templateView;
+        private BrightIdeasSoftware.OLVColumn statusColumnFQM;
+        private BrightIdeasSoftware.OLVColumn contentColumnFQM;
+        private BrightIdeasSoftware.OLVColumn countColumnFQM;
+        private System.Windows.Forms.GroupBox fileGroup;
+        private BrightIdeasSoftware.TreeListView folderView;
+        private BrightIdeasSoftware.OLVColumn treeColumnName;
+        private BrightIdeasSoftware.OLVColumn treeColumnMapping;
+        private BrightIdeasSoftware.OLVColumn treeColumnModify;
+        private BrightIdeasSoftware.OLVColumn treeColumnSize;
+        private BrightIdeasSoftware.OLVColumn treeColumnFileType;
     }
 }

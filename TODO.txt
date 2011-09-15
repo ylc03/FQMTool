@@ -1,0 +1,7 @@
+
+------- 2011 Sep 16 ---------
+1. JobQualityFolder: load template
+2. FolderManager: update template view
+
+3. JobQualityFolder: load folder mapping
+4. FolderManager: update folder view

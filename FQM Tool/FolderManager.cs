@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
+using FQM.Model;
+using FQM.Helper;
+
 namespace FQM
 {
     public partial class FolderManager : Form
@@ -17,6 +20,8 @@ namespace FQM
 
         #endregion
 
+        #region Constructor
+
         public FolderManager()
         {
             InitializeComponent();
@@ -24,38 +29,52 @@ namespace FQM
             refreshMenu();
         }
 
+        #endregion
+
         #region Menu Item Click
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+            this.folderBrowserDialog.ShowNewFolderButton = true;
+            if (folderBrowserDialog.ShowDialog(this) == DialogResult.OK)
+            {
+                this.saveIfNeeded();
+                if (JobQualityFolder.ValidateNewPath(folderBrowserDialog.SelectedPath))
+                {
+                    jobFolder = new JobQualityFolder(folderBrowserDialog.SelectedPath);
+                }
+                else
+                {
+                    FQMLog.Error(folderBrowserDialog.SelectedPath + " is not empty.", "Can't create job folder");
+                    jobFolder = null;
+                }
+
+                this.refreshGUI();
+            }
         }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            this.folderBrowserDialog.ShowNewFolderButton = false;
             if (folderBrowserDialog.ShowDialog(this) == DialogResult.OK)
             {
-                if (jobFolder != null && jobFolder.IsDirty)
+                this.saveIfNeeded();
+                if (JobQualityFolder.ValidateRootPath(folderBrowserDialog.SelectedPath))
                 {
-                    DialogResult res = MessageBox.Show(this, "Do you want to save job folder:\n" + jobFolder.RootPath, "Save?", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
-                    if (res == DialogResult.Cancel)
-                    {
-                        return;
-                    }
-                    else if (res == DialogResult.Yes)
-                    {
-                        jobFolder.Save();
-                    }
+                    jobFolder = new JobQualityFolder(folderBrowserDialog.SelectedPath);
                 }
-
-                jobFolder = new Model.JobQualityFolder(folderBrowserDialog.SelectedPath);
-                this.refreshMenu();
+                else
+                {
+                    FQMLog.Error(folderBrowserDialog.SelectedPath + " is not a valid FQM folder.", "Can't open job folder");
+                    jobFolder = null;
+                }
+                this.refreshGUI();
             }
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (jobFolder.IsDirty)
+            if (jobFolder != null && jobFolder.IsDirty)
             {
                 jobFolder.Save();
             }
@@ -65,30 +84,18 @@ namespace FQM
         {
             if (jobFolder == null ) return;
 
-            if (jobFolder.IsDirty)
-            {
-                DialogResult res = MessageBox.Show(this, "Do you want to save job folder:\n" + jobFolder.RootPath, "Save?", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
-
-                if (res == DialogResult.Cancel)
-                {
-                    return;
-                }
-                else if (res == DialogResult.Yes)
-                {
-                    jobFolder.Save();
-                }
-            }
-
+            this.saveIfNeeded();
             jobFolder = null;
-            this.refreshMenu();
+            this.refreshGUI();
         }
 
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            folderBrowserDialog.ShowNewFolderButton = true;
             if (folderBrowserDialog.ShowDialog(this) == DialogResult.OK)
             {
                 string root = folderBrowserDialog.SelectedPath;
-                if (Model.JobQualityFolder.ValidateRootPath(root))
+                if (JobQualityFolder.ValidateRootPath(root))
                 {
                     jobFolder.SaveAs(root);
                     jobFolder.IsDirty = false;
@@ -143,6 +150,24 @@ namespace FQM
 
         #endregion
 
+        #region Private helper functions
+
+        private void saveIfNeeded()
+        {
+            if (jobFolder != null && jobFolder.IsDirty)
+            {
+                DialogResult res = FQMLog.Question("Do you want to save current job folder:\n" + jobFolder.RootPath, "Save?");
+                if (res == DialogResult.Cancel)
+                {
+                    return;
+                }
+                else if (res == DialogResult.Yes)
+                {
+                    jobFolder.Save();
+                }
+            }
+        }
+
         private void refreshMenu()
         {
             if (this.jobFolder == null)
@@ -163,5 +188,42 @@ namespace FQM
             }
         }
 
+        private void refreshTemplateView()
+        {
+            if (jobFolder == null) return;
+
+        }
+
+        private void refreshFolderView()
+        {
+            if (jobFolder == null) return;
+        }
+
+        private void refreshGUI()
+        {
+            this.refreshTemplateView();
+            this.refreshFolderView();
+            this.refreshMenu();
+        }
+
+        #endregion
+
+        #region Template view event
+
+        private void templateView_DragEnter(object sender, DragEventArgs e)
+        {
+
+        }
+
+        private void templateView_DragDrop(object sender, DragEventArgs e)
+        {
+
+        }
+
+        #endregion
+
+        #region folder view event
+
+        #endregion
     }
 }

@@ -96,9 +96,10 @@
     <Compile Include="Helper\AspectExtensions.cs" />
     <Compile Include="Helper\AspectF.cs" />
     <Compile Include="Helper\CommonHelper.cs" />
+    <Compile Include="Helper\FQMLog.cs" />
     <Compile Include="Helper\ICache.cs" />
     <Compile Include="Helper\ObjectExtensions.cs" />
-    <Compile Include="JobQualityFolder.cs">
+    <Compile Include="JobQualityFolderOld.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="MainForm.cs">
